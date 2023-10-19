@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>???</title>
+  <title>threejs test</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <style>
+    body {
+      overflow: hidden;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
 
+<div id="webgl"></div>
+
 <script type="importmap">
-			{
-				"imports": {
-					"three": "../build/three.module.js"
-				}
-			}
-		</script>
-
-<script type="module">
-  import * as THREE from 'three';
-
-  console.log(THREE.Scene)
+  {
+    "imports": {
+      "three": "../threejs/build/three.module.js",
+      "three/addons/": "../threejs/jsm/"
+    }
+  }
 </script>
+
+<script type="module" src="index.js"></script>
 </body>
 </html>
