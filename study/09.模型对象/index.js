@@ -1,23 +1,9 @@
 import * as THREE from 'three'
 import {OrbitControls} from "three/addons/controls/OrbitControls.js";
-import pointModel from './01.点模型'
-import lineModel from './02.线模型'
-import meshModel from './03.网格模型(三角面)'
-import rectangleModel from './04.构建矩形平面'
-import geometryModel from './05.几何体顶点索引数据'
-import normalModel from './06.顶点法线数据'
-import builtModel from './07.内置几何体顶点结构'
-import transformModel from './08.旋转、缩放、平移方法'
+import vectorMesh from './01.三维向量与模型位置、缩放'
 
 const scene = new THREE.Scene()
-// scene.add(pointModel)
-// scene.add(lineModel.line)
-// scene.add(meshModel)
-// scene.add(rectangleModel)
-// scene.add(geometryModel)
-// scene.add(normalModel)
-// scene.add(builtModel)
-scene.add(transformModel)
+scene.add(vectorMesh)
 
 // 创建坐标轴
 const axes = new THREE.AxesHelper(1000)
