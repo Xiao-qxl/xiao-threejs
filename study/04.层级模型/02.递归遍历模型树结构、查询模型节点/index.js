@@ -34,7 +34,7 @@ group.add(group1).add(group2)
 group.traverse((child) => {
   // 过滤掉所有不是模型的节点
   if (child instanceof THREE.Mesh) {
-    console.log(child.name)
+    // console.log(child.name)
     child.material.color.set(0xffff00)
   }
 })
