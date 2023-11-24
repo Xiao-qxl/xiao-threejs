@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 
 const geometry = new THREE.CircleGeometry(50, 100)
-
+console.log(geometry.attributes.uv)
 const loadTex = new THREE.TextureLoader()
 const texture = loadTex.load('./public/cartoon.png')
 
