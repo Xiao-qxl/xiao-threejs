@@ -3,9 +3,9 @@ import {OrbitControls} from "three/addons/controls/OrbitControls.js";
 
 class BaseScene {
   constructor(
-    {
-      el = document.body,
-    }) {
+    {el} = {
+      el: document.body
+    },) {
     this.width = window.innerWidth
     this.height = window.innerHeight
 
@@ -13,6 +13,8 @@ class BaseScene {
     this.camera = this.initCamera()
     this.renderer = this.initRenderer(el)
     this.ambientLight = this.initAmbientLight()
+    this.pointLight = this.initPointLight()
+    this.directionalLight = this.initDirectionalLight()
     this.gridHelper = this.initGridHelper()
     this.axesHelper = this.initAxesHelper()
 
@@ -23,9 +25,11 @@ class BaseScene {
   init() {
     this.scene.add(this.camera)
     this.scene.add(this.ambientLight)
+    this.scene.add(this.directionalLight)
+    // this.scene.add(this.pointLight)
     // this.scene.add(this.gridHelper)
     this.scene.add(this.axesHelper)
-    // const controls = new OrbitControls(this.camera, this.renderer.domElement)
+    const controls = new OrbitControls(this.camera, this.renderer.domElement)
 
     this.render()
     this.resize()
@@ -48,7 +52,7 @@ class BaseScene {
   // 初始化相机
   initCamera() {
     const camera = new THREE.PerspectiveCamera(
-      30, this.width / this.height, 100, 3000
+      30, this.width / this.height, 1, 3000
     )
     // 设置相机位置800, 800, 800
     camera.position.set(800, 800, 800)
@@ -66,8 +70,22 @@ class BaseScene {
 
   // 初始化环境光
   initAmbientLight() {
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1)
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4)
     return ambientLight
+  }
+
+  // 初始化平行光
+  initDirectionalLight() {
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8)
+    directionalLight.position.set(400, 200, 300)
+    return directionalLight
+  }
+
+  // 初始化点光源
+  initPointLight() {
+    const pointLight = new THREE.PointLight(0xffffff, 1)
+    pointLight.position.set(300, 300, 0)
+    return pointLight
   }
 
   // 渲染器
