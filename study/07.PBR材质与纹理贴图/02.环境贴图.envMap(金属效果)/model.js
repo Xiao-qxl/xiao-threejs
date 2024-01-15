@@ -21,8 +21,8 @@ const textureCube = new THREE.CubeTextureLoader()
 loader.load("./金属.glb", (gltf) => {
   gltf.scene.traverse((child) => {
     if (child.isMesh) {
-      child.material.metalness = 1.0
-      child.material.roughness = 0.35
+      child.material.metalness = 1.0 // 金属度
+      child.material.roughness = 0.35 // 粗糙度
       child.material.envMap = textureCube  // 环境贴图
       child.material.envMapIntensity = 1.0
     }

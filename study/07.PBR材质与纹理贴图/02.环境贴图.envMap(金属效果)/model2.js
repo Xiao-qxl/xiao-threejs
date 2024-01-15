@@ -15,7 +15,7 @@ const textureCube = new THREE.CubeTextureLoader()
   .load(['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg'])
 
 loader.load("../06.加载外部三维模型(gltf)/工厂.gltf", (gltf) => {
-  // 设置全局的环境贴图，影响所有物体
+  // 设置场景环境属性 全局的环境贴图，影响所有物体
   baseScene.scene.environment = textureCube
   // gltf.scene.traverse((child) => {
   //   if (child.isMesh) {

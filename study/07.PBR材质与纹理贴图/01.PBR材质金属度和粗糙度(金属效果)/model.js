@@ -10,8 +10,8 @@ const model = new THREE.Group()
 loader.load('./金属.glb', (gltf) => {
   gltf.scene.traverse((child) => {
     if (child.isMesh) {
-      child.material.metalness = 1.0
-      child.material.roughness = 0.8
+      child.material.metalness = 1.0 // 金属度
+      child.material.roughness = 0.8 // 粗糙度
     }
   })
   model.add(gltf.scene)
