@@ -1,6 +1,6 @@
 import * as THREE from 'three'
-import {GLTFLoader} from "three/addons/loaders/GLTFLoader.js";
-import {GUI} from "three/addons/libs/lil-gui.module.min.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { GUI } from "three/addons/libs/lil-gui.module.min.js";
 import BaseScene from "baseScene";
 
 const baseScene = new BaseScene();
@@ -30,6 +30,7 @@ loader.load('./轿车.glb', gltf => {
   handlingGlass()
 })
 
+// 材质
 function handleEnclosure() {
   const mesh = baseScene.scene.getObjectByName('外壳01');
   mesh.material = new THREE.MeshPhysicalMaterial({
@@ -39,7 +40,7 @@ function handleEnclosure() {
     // envMap: textureCube, // 环境贴图
     // envMapIntensity: 2.0, // 环境贴图强度
     clearcoat: 1.0, // 清漆层
-    clearcoatRoughness: 0.1, // 清漆层粗糙度
+    clearcoatRoughness: 0.2, // 清漆层粗糙度
   });
 
   const folder = gui.addFolder('车外壳材质')
@@ -51,12 +52,13 @@ function handleEnclosure() {
 
 }
 
+// 玻璃
 function handlingGlass() {
   const mesh = baseScene.scene.getObjectByName('玻璃01');
   mesh.material = new THREE.MeshPhysicalMaterial({
-    metalness: 0.0,
-    roughness: 0.0,
-    transmission: 1.0, // 透光率
+    metalness: 0.0, // 金属度
+    roughness: 0.0, // 金属粗糙度
+    transmission: 1.0, // 物理材质的透光率，0表示完全不透光，1表示完全透光
     ior: 1.52, //  物质的IOR值，即 物质的透明度，1.52表示1.52倍的透明度
   })
 
