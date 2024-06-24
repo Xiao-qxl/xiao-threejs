@@ -93,6 +93,7 @@ class BaseScene {
     const renderer = new THREE.WebGLRenderer({
       antialias: true, // 开启抗锯齿
       preserveDrawingBuffer: true, // 输出图像不进行像素处理
+      logarithmicDepthBuffer: true, // 开启深度缓冲区，优化深度冲突问题
     })
     renderer.setSize(this.width, this.height)
     renderer.outputEncoding = THREE.sRGBEncoding
