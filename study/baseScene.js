@@ -1,9 +1,9 @@
 import * as THREE from 'three'
-import {OrbitControls} from "three/addons/controls/OrbitControls.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 class BaseScene {
   constructor(
-    {el} = {
+    { el } = {
       el: document.body
     },) {
     this.width = window.innerWidth
@@ -90,7 +90,10 @@ class BaseScene {
 
   // 渲染器
   initRenderer(el = document.body) {
-    const renderer = new THREE.WebGLRenderer()
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true, // 开启抗锯齿
+      preserveDrawingBuffer: true, // 输出图像不进行像素处理
+    })
     renderer.setSize(this.width, this.height)
     renderer.outputEncoding = THREE.sRGBEncoding
     el.appendChild(renderer.domElement)
@@ -115,7 +118,7 @@ class BaseScene {
   // 添加正方形模型
   addSquareModel() {
     const geometry = new THREE.BoxGeometry(100, 100, 100)
-    const material = new THREE.MeshLambertMaterial({color: 0x00ff00})
+    const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 })
     const square = new THREE.Mesh(geometry, material)
     square.position.set(0, 0, 0)
     this.scene.add(square)
