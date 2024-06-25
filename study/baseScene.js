@@ -17,6 +17,7 @@ class BaseScene {
     this.directionalLight = this.initDirectionalLight()
     this.gridHelper = this.initGridHelper()
     this.axesHelper = this.initAxesHelper()
+    this.renderAnimation = null
 
     this.init()
   }
@@ -104,7 +105,7 @@ class BaseScene {
   // 渲染
   render() {
     this.renderer.render(this.scene, this.camera)
-    requestAnimationFrame(() => this.render())
+    this.renderAnimation = requestAnimationFrame(() => this.render())
   }
 
   // 画布跟随窗口变化
@@ -121,6 +122,7 @@ class BaseScene {
     const geometry = new THREE.BoxGeometry(100, 100, 100)
     const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 })
     const square = new THREE.Mesh(geometry, material)
+    square.name = "square"
     square.position.set(0, 0, 0)
     this.scene.add(square)
   }
